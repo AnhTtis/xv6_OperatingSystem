@@ -696,3 +696,17 @@ procdump(void)
     printf("\n");
   }
 }
+
+uint64 count_nproc(void) {
+    struct proc *p;
+    int count = 0;
+
+    for (p = proc; p < &proc[NPROC]; p++) {
+        acquire(&p->lock);
+        if (p->state != UNUSED)  // Count non-UNUSED processes
+            count++;
+        release(&p->lock);
+    }
+
+    return count;
+}
