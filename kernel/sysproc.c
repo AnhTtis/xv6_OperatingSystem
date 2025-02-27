@@ -85,6 +85,13 @@ uint64 sys_hello(void)
   return 0;
 }
 
+uint64 sys_trace(void) {
+    int mask;
+    argint(0, &mask);
+    myproc()->trace_mask = mask;  // Store trace mask in the process
+    return 0;
+}
+
 // return how many clock tick interrupts have occurred
 // since start.
 uint64
