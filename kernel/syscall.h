@@ -20,3 +20,9 @@
 #define SYS_link   19
 #define SYS_mkdir  20
 #define SYS_close  21
+<<<<<<< HEAD
+=======
+#define SYS_hello  22
+#define SYS_trace  23  // Assign an unused syscall number
+#define SYS_sysinfo 24  // Add an unused syscall number
+>>>>>>> AnhTris

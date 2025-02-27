@@ -5,6 +5,11 @@
 #include "memlayout.h"
 #include "spinlock.h"
 #include "proc.h"
+<<<<<<< HEAD
+=======
+#include "sysinfo.h"
+
+>>>>>>> AnhTris
 
 uint64
 sys_exit(void)
@@ -79,6 +84,22 @@ sys_kill(void)
   return kill(pid);
 }
 
+<<<<<<< HEAD
+=======
+uint64 sys_hello(void)
+{
+  printf("Hello, world!\n");
+  return 0;
+}
+
+uint64 sys_trace(void) {
+    int mask;
+    argint(0, &mask);
+    myproc()->trace_mask = mask;  // Store trace mask in the process
+    return 0;
+}
+
+>>>>>>> AnhTris
 // return how many clock tick interrupts have occurred
 // since start.
 uint64
@@ -91,3 +112,31 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+<<<<<<< HEAD
+=======
+
+
+uint64 count_freemem(void);
+uint64 count_nproc(void);
+uint64 count_openfiles(void);
+
+uint64 sys_sysinfo(void) {
+    struct sysinfo info;
+    uint64 addr;
+    
+    // Just call argaddr() without checking return value
+    argaddr(0, &addr);
+
+    //Fill sysinfo struct
+    info.freemem = count_freemem();
+    info.nproc = count_nproc();
+    info.nopenfiles = count_openfiles();
+
+    // Copy struct to user space
+    if (copyout(myproc()->pagetable, addr, (char*)&info, sizeof(info)) < 0)
+        return -1;
+
+    return 0;
+}
+
+>>>>>>> AnhTris

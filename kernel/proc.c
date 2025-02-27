@@ -302,6 +302,12 @@ fork(void)
   // Cause fork to return 0 in the child.
   np->trapframe->a0 = 0;
 
+<<<<<<< HEAD
+=======
+   // Copy the trace mask from the parent to the child.
+    np->trace_mask = p->trace_mask;  // Inherit trace setting
+
+>>>>>>> AnhTris
   // increment reference counts on open file descriptors.
   for(i = 0; i < NOFILE; i++)
     if(p->ofile[i])
@@ -693,3 +699,20 @@ procdump(void)
     printf("\n");
   }
 }
+<<<<<<< HEAD
+=======
+
+uint64 count_nproc(void) {
+    struct proc *p;
+    int count = 0;
+
+    for (p = proc; p < &proc[NPROC]; p++) {
+        acquire(&p->lock);
+        if (p->state != UNUSED)  // Count non-UNUSED processes
+            count++;
+        release(&p->lock);
+    }
+
+    return count;
+}
+>>>>>>> AnhTris
