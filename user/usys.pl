@@ -36,9 +36,6 @@ entry("getpid");
 entry("sbrk");
 entry("sleep");
 entry("uptime");
-<<<<<<< HEAD
-=======
 entry("hello");
 entry("trace");
 entry("sysinfo");
->>>>>>> AnhTris

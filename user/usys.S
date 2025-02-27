@@ -105,3 +105,18 @@ uptime:
  li a7, SYS_uptime
  ecall
  ret
+.global hello
+hello:
+ li a7, SYS_hello
+ ecall
+ ret
+.global trace
+trace:
+ li a7, SYS_trace
+ ecall
+ ret
+.global sysinfo
+sysinfo:
+ li a7, SYS_sysinfo
+ ecall
+ ret

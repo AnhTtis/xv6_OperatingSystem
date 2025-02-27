@@ -194,15 +194,9 @@ UPROGS=\
 	$U/_grind\
 	$U/_wc\
 	$U/_zombie\
-<<<<<<< HEAD
-
-
-
-=======
 	$U/_testhello\
 	$U/_trace\
 	$U/_sysinfo\
->>>>>>> AnhTris
 
 ifeq ($(LAB),syscall)
 UPROGS += \

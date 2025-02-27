@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 #include "kernel/types.h"
->>>>>>> AnhTris
 struct stat;
 
 // system calls
@@ -26,11 +23,8 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-<<<<<<< HEAD
-=======
 int hello(void);
 int trace(int);
->>>>>>> AnhTris
 
 // ulib.c
 int stat(const char*, struct stat*);
@@ -50,9 +44,6 @@ void *memcpy(void *, const void *, uint);
 // umalloc.c
 void* malloc(uint);
 void free(void*);
-<<<<<<< HEAD
-=======
 
 struct sysinfo;  // Forward declaration
 int sysinfo(struct sysinfo *);  // Declare the system call
->>>>>>> AnhTris

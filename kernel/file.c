@@ -180,8 +180,6 @@ filewrite(struct file *f, uint64 addr, int n)
   return ret;
 }
 
-<<<<<<< HEAD
-=======
 uint64 count_openfiles(void) {
     struct file *f;
     int count = 0;
@@ -195,4 +193,3 @@ uint64 count_openfiles(void) {
 
     return count;
 }
->>>>>>> AnhTris

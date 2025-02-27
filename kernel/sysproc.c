@@ -5,11 +5,8 @@
 #include "memlayout.h"
 #include "spinlock.h"
 #include "proc.h"
-<<<<<<< HEAD
-=======
 #include "sysinfo.h"
 
->>>>>>> AnhTris
 
 uint64
 sys_exit(void)
@@ -84,8 +81,6 @@ sys_kill(void)
   return kill(pid);
 }
 
-<<<<<<< HEAD
-=======
 uint64 sys_hello(void)
 {
   printf("Hello, world!\n");
@@ -99,7 +94,6 @@ uint64 sys_trace(void) {
     return 0;
 }
 
->>>>>>> AnhTris
 // return how many clock tick interrupts have occurred
 // since start.
 uint64
@@ -112,8 +106,6 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
-<<<<<<< HEAD
-=======
 
 
 uint64 count_freemem(void);
@@ -139,4 +131,3 @@ uint64 sys_sysinfo(void) {
     return 0;
 }
 
->>>>>>> AnhTris
