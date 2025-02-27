@@ -79,6 +79,12 @@ sys_kill(void)
   return kill(pid);
 }
 
+uint64 sys_hello(void)
+{
+  printf("Hello, world!\n");
+  return 0;
+}
+
 // return how many clock tick interrupts have occurred
 // since start.
 uint64
