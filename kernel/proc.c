@@ -699,7 +699,7 @@ procdump(void)
 
 uint64 count_nproc(void) {
     struct proc *p;
-    int count = 0;
+    uint64 count = 0;
 
     for (p = proc; p < &proc[NPROC]; p++) {
         acquire(&p->lock);
