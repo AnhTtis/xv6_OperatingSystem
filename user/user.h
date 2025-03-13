@@ -1,6 +1,6 @@
 #include "kernel/types.h"
 struct stat;
-
+struct sysinfo;  // Forward declaration
 // system calls
 int fork(void);
 int exit(int) __attribute__((noreturn));
@@ -25,6 +25,7 @@ int sleep(int);
 int uptime(void);
 int hello(void);
 int trace(int);
+int sysinfo(struct sysinfo *);  // Declare the system call
 
 // ulib.c
 int stat(const char*, struct stat*);
@@ -44,6 +45,3 @@ void *memcpy(void *, const void *, uint);
 // umalloc.c
 void* malloc(uint);
 void free(void*);
-
-struct sysinfo;  // Forward declaration
-int sysinfo(struct sysinfo *);  // Declare the system call

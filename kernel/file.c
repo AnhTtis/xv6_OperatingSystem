@@ -182,7 +182,7 @@ filewrite(struct file *f, uint64 addr, int n)
 
 uint64 count_openfiles(void) {
     struct file *f;
-    int count = 0;
+    uint64 count = 0;
 
     acquire(&ftable.lock);
     for (f = ftable.file; f < &ftable.file[NFILE]; f++) {

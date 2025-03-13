@@ -7,14 +7,13 @@
 #include "proc.h"
 #include "sysinfo.h"
 
-
 uint64
 sys_exit(void)
 {
   int n;
   argint(0, &n);
   exit(n);
-  return 0;  // not reached
+  return 0; // not reached
 }
 
 uint64
@@ -45,7 +44,7 @@ sys_sbrk(void)
 
   argint(0, &n);
   addr = myproc()->sz;
-  if(growproc(n) < 0)
+  if (growproc(n) < 0)
     return -1;
   return addr;
 }
@@ -57,12 +56,14 @@ sys_sleep(void)
   uint ticks0;
 
   argint(0, &n);
-  if(n < 0)
+  if (n < 0)
     n = 0;
   acquire(&tickslock);
   ticks0 = ticks;
-  while(ticks - ticks0 < n){
-    if(killed(myproc())){
+  while (ticks - ticks0 < n)
+  {
+    if (killed(myproc()))
+    {
       release(&tickslock);
       return -1;
     }
@@ -87,11 +88,12 @@ uint64 sys_hello(void)
   return 0;
 }
 
-uint64 sys_trace(void) {
-    int mask;
-    argint(0, &mask);
-    myproc()->trace_mask = mask;  // Store trace mask in the process
-    return 0;
+uint64 sys_trace(void)
+{
+  int mask;
+  argint(0, &mask);
+  myproc()->trace_mask = mask; // Store trace mask in the process
+  return 0;
 }
 
 // return how many clock tick interrupts have occurred
@@ -107,27 +109,26 @@ sys_uptime(void)
   return xticks;
 }
 
-
 uint64 count_freemem(void);
 uint64 count_nproc(void);
 uint64 count_openfiles(void);
 
-uint64 sys_sysinfo(void) {
-    struct sysinfo info;
-    uint64 addr;
-    
-    // Just call argaddr() without checking return value
-    argaddr(0, &addr);
+uint64 sys_sysinfo(void)
+{
+  struct sysinfo info;
+  uint64 addr;
 
-    //Fill sysinfo struct
-    info.freemem = count_freemem();
-    info.nproc = count_nproc();
-    info.nopenfiles = count_openfiles();
+  // Just call argaddr() without checking return value
+  argaddr(0, &addr);
 
-    // Copy struct to user space
-    if (copyout(myproc()->pagetable, addr, (char*)&info, sizeof(info)) < 0)
-        return -1;
+  // Fill sysinfo struct
+  info.freemem = count_freemem();
+  info.nproc = count_nproc();
+  info.nopenfiles = count_openfiles();
 
-    return 0;
+  // Copy struct to user space
+  if (copyout(myproc()->pagetable, addr, (char *)&info, sizeof(info)) < 0)
+    return -1;
+
+  return 0;
 }
-
